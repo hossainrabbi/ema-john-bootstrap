@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const Inventory = () => {
    return (
-      <div>
-         <h2>Inventory</h2>
-      </div>
+      <Container>
+         <h1 className="text-center">This is Manage Inventory Page</h1>
+      </Container>
    );
 };
 
