@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
 
-const Cart = ({ cart }) => {
-   let price = cart.reduce((acc, totalPrice) => acc + totalPrice.price, 0);
+const Cart = ({ cart, children }) => {
+   let price = cart.reduce(
+      (acc, totalPrice) => acc + totalPrice.price * totalPrice.quantity,
+      0
+   );
    price = Number(price.toFixed(2));
    const tax = Number((price / 10).toFixed(2));
    const total = Number((price + tax).toFixed(2));
@@ -38,9 +40,7 @@ const Cart = ({ cart }) => {
                </tr>
             </tbody>
          </Table>
-         <Link to="/review">
-            <Button variant="warning">Review Place</Button>
-         </Link>
+         {children}
       </>
    );
 };
